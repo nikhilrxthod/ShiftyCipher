@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shifty Cipher Encryption</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #000;
@@ -22,33 +20,28 @@
             align-items: center;
             height: 100vh;
         }
-
         .container {
             max-width: 500px;
-            background: #111;
+            background: #1e1e1e;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
             text-align: center;
         }
-
         form {
             display: flex;
             flex-direction: column;
         }
-
         h1 {
+            color: #ffcc00;
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.1);
         }
-
         label {
             margin: 15px 0 5px;
             font-weight: bold;
             color: #ccc;
         }
-
         textarea, input[type="number"] {
             width: 100%;
             padding: 12px;
@@ -56,40 +49,34 @@
             border: none;
             border-radius: 10px;
             font-size: 16px;
-            background: #222;
+            background: #2c2c2c;
             color: #fff;
         }
-
         textarea:focus, input[type="number"]:focus {
-            outline: 2px solid #32cd32;
-            box-shadow: 0 0 10px #32cd32;
+            outline: 2px solid #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
         }
-
         button {
             width: 100%;
             padding: 15px;
-            color: white;
+            color: #000;
             border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            opacity: 0.8;
-            background-color: #32cd32;
+            background-color: #ffcc00;
             transition: transform 0.2s, box-shadow 0.3s;
         }
-
         button:hover {
-            color: #32cd32;
-            outline: 2px solid #32cd32;
+            color: #ffcc00;
+            outline: 2px solid #ffcc00;
             background-color: transparent;
         }
-
         h2 {
             margin: 20px;
             font-size: 1.5em;
         }
-
         p {
             background: #1b1b1b;
             padding: 15px;
@@ -109,7 +96,6 @@
             <input type="number" id="shift" name="shift" required>
             <button type="submit">Encrypt</button>
         </form>
-
         {% if encrypted_text %}
         <h2>Encrypted Text:</h2>
         <p>{{ encrypted_text }}</p>
