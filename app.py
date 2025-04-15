@@ -4,24 +4,19 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 def shifty_cipher(text, shift):
-    encrypted_text = ""
-    for char in text:
-        if char.isalpha():
-            shift_amount = shift % 26
-            if char.islower():
-                encrypted_text += chr((ord(char) - ord('a') + shift_amount) % 26 + ord('a'))
-            else:
-                encrypted_text += chr((ord(char) - ord('A') + shift_amount) % 26 + ord('A'))
-        else:
-            encrypted_text += char
-    return encrypted_text
+    def shift_char(char, shift_amount):
+        base = ord('a') if char.islower() else ord('A')
+        return chr((ord(char) - base + shift_amount) % 26 + base)
+
+    shift_amount = shift % 26
+    return ''.join(shift_char(char, shift_amount) if char.isalpha() else char for char in text)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     encrypted_text = ""
     if request.method == 'POST':
-        text = request.form['text']
-        shift = int(request.form['shift'])
+        text = request.form.get('text', '')
+        shift = int(request.form.get('shift', 0))
         encrypted_text = shifty_cipher(text, shift)
     return render_template('index.html', encrypted_text=encrypted_text)
 
